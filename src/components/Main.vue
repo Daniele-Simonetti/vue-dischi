@@ -8,9 +8,10 @@
         v-for="(disco, index) in discs"
         :key="index"
         :image="disco.poster"
-        :title="disco.title"
-        :author="disco.author"
-        :year="disco.year"
+        :image-alt="disco.title"
+        :main-heading="disco.title"
+        :heading3="disco.author"
+        :heading4="disco.year"
       />
       <!-- <div
         v-for="(disc, index) in discs"
@@ -76,16 +77,6 @@ export default {
       height: 100%;
       display: flex;
       flex-wrap: wrap;
-      .card {
-        flex-basis: calc((100% / 5) - 2em);
-        margin: 1em;
-        background-color: #2E3A46;
-        padding: 1em;
-        h2 {
-          color: white;
-          text-transform: uppercase;
-        }
-      }
     }
   }
 </style>
