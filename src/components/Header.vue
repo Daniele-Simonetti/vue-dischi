@@ -1,6 +1,6 @@
 <template>
-  <header>
-    <i class="fab fa-spotify"></i>
+  <header class="text-start">
+    <img src="../assets/img/logospot.png" alt="">
   </header>
 </template>
 
@@ -13,10 +13,9 @@ export default {
 <style lang="scss" scoped>
 header {
   background-color: #2E3A46;
-  height: 100px;
-  i {
-    font-size: 3em;
-    color: white;
+  img {
+    width: 3%;
+    margin: 0.5em 1em;
   }
 }
 
