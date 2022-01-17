@@ -19,5 +19,8 @@ export default {
 </script>
 
 <style lang="scss">
-
+  main {
+    background-color: #1E2D3B;
+    height: 100vh;
+  }
 </style>
