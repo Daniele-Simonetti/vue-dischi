@@ -1,6 +1,9 @@
 <template>
   <header class="text-start">
-    <img src="../assets/img/logospot.png" alt="">
+    <img
+      src="../assets/img/logospot.png"
+      alt=""
+    >
   </header>
 </template>
 
