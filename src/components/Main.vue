@@ -4,7 +4,15 @@
       v-if="discs"
       class="container"
     >
-      <div
+      <Card
+        v-for="(disco, index) in discs"
+        :key="index"
+        :image="disco.poster"
+        :title="disco.title"
+        :author="disco.author"
+        :year="disco.year"
+      />
+      <!-- <div
         v-for="(disc, index) in discs"
         :key="index"
         class="card"
@@ -18,7 +26,7 @@
         </h2>
         <h3>{{ disc.author }}</h3>
         <h4>{{ disc.year }}</h4>
-      </div>
+      </div> -->
     </div>
   </main>
 </template>
@@ -26,6 +34,7 @@
 <script>
 // installo axios e lo importo per poi prendere i data
 import axios from 'axios';
+import Card from './Card.vue';
 // tengo un esempio dell'array che prendo nei data per comodità
 //  "response": [
 //    {
@@ -38,6 +47,9 @@ import axios from 'axios';
 
 export default {
   name: 'Main',
+  components: {
+    Card,
+  },
   data() {
     return {
       discs: null,
