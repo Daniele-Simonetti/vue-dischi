@@ -60,6 +60,7 @@ export default {
     return {
       discs: null,
       genre: 'All',
+      selectedDiscs: null,
     };
   },
   mounted() {
@@ -75,7 +76,6 @@ export default {
   methods: {
     filterDisc() {
       console.log(this.genre);
-      return this.genre;
     },
   },
 };
