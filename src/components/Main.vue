@@ -5,37 +5,13 @@
       class="container"
     >
       <div class="row">
-        <div class="col-12 select">
-          <select
-            v-model="selectedDiscs"
-            class="form-select form-select-lg mb-3"
-            aria-label=".form-select-lg example"
-            @change="filterDisc()"
-          >
-            <option
-              value="All"
-            >
-              All
-            </option>
-            <!-- rock, pop,jazz, metal  -->
-            <option value="Rock">
-              Rock
-            </option>
-            <option value="Pop">
-              Pop
-            </option>
-            <option value="Jazz">
-              Jazz
-            </option>
-            <option value="Metal">
-              Metal
-            </option>
-          </select>
-        </div>
+        <Select
+          @selectGen="filtering($event)"
+        />
       </div>
       <div class="row row-col-5">
         <Card
-          v-for="(disco, index) in discs"
+          v-for="(disco, index) in newDiscs"
           :key="index"
           :image="disco.poster"
           :image-alt="disco.title"
@@ -52,17 +28,20 @@
 // installo axios e lo importo per poi prendere i data
 import axios from 'axios';
 import Card from './Card.vue';
+import Select from './Select.vue';
 
 export default {
   name: 'Main',
   components: {
     Card,
+    Select,
   },
   data() {
     return {
       discs: null,
-      selectedDiscs: 'All',
       newDiscs: null,
+      selectedDiscs: 'All',
+      test: '',
     };
   },
   computed: {
@@ -79,14 +58,25 @@ export default {
       });
   },
   methods: {
-    filterDisc() {
-      // metto i due array uguali così quando sono su all non parte il filtro
-      console.log(this.selectedDiscs);
-      this.discs = this.newDiscs;
-      // se il mio v-model è diverso da 'All? allora faccio partire il filtro
-      if (this.selectedDiscs !== 'All') {
-        this.discs = this.discs.filter((element) => {
-          if (element.genre.includes(this.selectedDiscs)) {
+    // filterDisc() {
+    //   // metto i due array uguali così quando sono su all non parte il filtro
+    //   this.discs = this.newDiscs;
+    //   // se il mio v-model è diverso da 'All? allora faccio partire il filtro
+    //   if (this.selectedDiscs !== 'All') {
+    //     this.discs = this.discs.filter((element) => {
+    //       if (element.genre.includes(this.selectedDiscs)) {
+    //         return true;
+    //       }
+    //       return false;
+    //     });
+    //   }
+    // },
+    filtering(opt) {
+      console.log(opt);
+      this.newDiscs = this.discs;
+      if (opt !== 'All') {
+        this.newDiscs = this.discs.filter((element) => {
+          if (element.genre.includes(opt)) {
             return true;
           }
           return false;
