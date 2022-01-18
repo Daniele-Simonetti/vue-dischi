@@ -13,7 +13,6 @@
             @change="filterDisc()"
           >
             <option
-              selected
               value="All"
             >
               All
@@ -67,12 +66,12 @@ export default {
     };
   },
   computed: {
-    initialDiscs() {
-      if (this.selectedDiscs === 'All') {
-        return this.discs;
-      }
-      return false;
-    },
+    // initialDiscs() {
+    //   if (this.selectedDiscs === 'All') {
+    //     return this.discs;
+    //   }
+    //   return false;
+    // },
   },
   mounted() {
     axios.get('https://flynn.boolean.careers/exercises/api/array/music')
