@@ -4,15 +4,17 @@
       v-if="discs"
       class="container"
     >
-      <Card
-        v-for="(disco, index) in discs"
-        :key="index"
-        :image="disco.poster"
-        :image-alt="disco.title"
-        :main-heading="disco.title"
-        :heading3="disco.author"
-        :heading4="disco.year"
-      />
+      <div class="row row-col-5">
+        <Card
+          v-for="(disco, index) in discs"
+          :key="index"
+          :image="disco.poster"
+          :image-alt="disco.title"
+          :main-heading="disco.title"
+          :heading3="disco.author"
+          :heading4="disco.year"
+        />
+      </div>
       <!-- <div
         v-for="(disc, index) in discs"
         :key="index"
@@ -73,10 +75,5 @@ export default {
   main {
     background-color: #1E2D3B;
     padding: 3em;
-    .container {
-      height: 100%;
-      display: flex;
-      flex-wrap: wrap;
-    }
   }
 </style>

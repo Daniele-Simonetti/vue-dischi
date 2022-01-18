@@ -1,6 +1,6 @@
 <template>
   <div
-    class="card"
+    class="card col"
   >
     <img
       :src="image"
