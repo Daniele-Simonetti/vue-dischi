@@ -35,7 +35,7 @@
       </div>
       <div class="row row-col-5">
         <Card
-          v-for="(disco, index) in newDiscList"
+          v-for="(disco, index) in discs"
           :key="index"
           :image="disco.poster"
           :image-alt="disco.title"
@@ -61,9 +61,8 @@ export default {
   data() {
     return {
       discs: null,
-      newDiscList: null,
-      genre: 'All',
       selectedDiscs: 'All',
+      newDiscs: null,
     };
   },
   computed: {
@@ -71,8 +70,9 @@ export default {
   mounted() {
     axios.get('https://flynn.boolean.careers/exercises/api/array/music')
       .then((result) => {
-        // console.log(result.data.response);
+        // creo due array uguali per ripopolare l'array dopo il filtro
         this.discs = result.data.response;
+        this.newDiscs = result.data.response;
       })
       .catch((error) => {
         console.log(error);
@@ -80,21 +80,18 @@ export default {
   },
   methods: {
     filterDisc() {
-      console.log('selectedDisc', this.selectedDiscs);
-      console.log('genre', this.genre);
-      // console.log(this.genre);
-      this.newDiscList = this.discs.filter((element) => {
-        if (element.genre === this.selectedDiscs) {
-          return true;
-        } if (this.selectedDiscs === 'All') {
-          return this.newDiscList === this.discs;
-        }
-        return false;
-      });
-      // return this.genre.filter(
-      //   (element) => element.genre.includes(this.selectedDiscs),
-      // );
-      // element.genre === this.selectedDiscs
+      // metto i due array uguali così quando sono su all non parte il filtro
+      console.log(this.selectedDiscs);
+      this.discs = this.newDiscs;
+      // se il mio v-model è diverso da 'All? allora faccio partire il filtro
+      if (this.selectedDiscs !== 'All') {
+        this.discs = this.discs.filter((element) => {
+          if (element.genre.includes(this.selectedDiscs)) {
+            return true;
+          }
+          return false;
+        });
+      }
     },
   },
 };
