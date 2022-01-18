@@ -42,6 +42,10 @@ export default {
       type: String,
       required: true,
     },
+    genere: {
+      type: String,
+      default: null,
+    },
   },
 };
 </script>

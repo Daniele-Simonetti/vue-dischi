@@ -16,9 +16,6 @@
               All
             </option>
             <!-- rock, pop,jazz, metal  -->
-            <option value="Rock">
-              Rock
-            </option>/>
             <option value="Pop">
               Pop
             </option>
@@ -40,6 +37,7 @@
           :main-heading="disco.title"
           :heading3="disco.author"
           :heading4="disco.year"
+          :genere="disco.genre"
         />
       </div>
     </div>
@@ -59,9 +57,11 @@ export default {
   data() {
     return {
       discs: null,
-      genre: 'All',
+      genre: null,
       selectedDiscs: null,
     };
+  },
+  computed: {
   },
   mounted() {
     axios.get('https://flynn.boolean.careers/exercises/api/array/music')
@@ -76,6 +76,10 @@ export default {
   methods: {
     filterDisc() {
       console.log(this.genre);
+      // return this.discs.filter((element) => element.genre.includes(this.selectedDiscs));
+      // return this.genre.filter(
+      //   (element) => element.genre.includes(this.selectedDiscs),
+      // );
     },
   },
 };
