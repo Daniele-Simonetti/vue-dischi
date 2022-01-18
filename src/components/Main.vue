@@ -35,7 +35,7 @@
       </div>
       <div class="row row-col-5">
         <Card
-          v-for="(disco, index) in selectedDiscs"
+          v-for="(disco, index) in newDiscList"
           :key="index"
           :image="disco.poster"
           :image-alt="disco.title"
@@ -61,17 +61,12 @@ export default {
   data() {
     return {
       discs: null,
+      newDiscList: null,
       genre: 'All',
-      selectedDiscs: null,
+      selectedDiscs: 'All',
     };
   },
   computed: {
-    // initialDiscs() {
-    //   if (this.selectedDiscs === 'All') {
-    //     return this.discs;
-    //   }
-    //   return false;
-    // },
   },
   mounted() {
     axios.get('https://flynn.boolean.careers/exercises/api/array/music')
@@ -85,15 +80,14 @@ export default {
   },
   methods: {
     filterDisc() {
-      this.genre = this.selectedDiscs;
       console.log('selectedDisc', this.selectedDiscs);
       console.log('genre', this.genre);
       // console.log(this.genre);
-      this.selectedDiscs = this.discs.filter((element) => {
+      this.newDiscList = this.discs.filter((element) => {
         if (element.genre === this.selectedDiscs) {
           return true;
         } if (this.selectedDiscs === 'All') {
-          return this.discs;
+          return this.newDiscList === this.discs;
         }
         return false;
       });
