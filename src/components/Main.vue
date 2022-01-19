@@ -71,8 +71,9 @@ export default {
     //   }
     // },
     filtering(opt) {
-      console.log(opt);
+      console.log('var di filtereing', opt);
       // inverto i due array per usare la copia del mio array principale
+      console.log('var data', this.selectedDiscs);
       this.selectedDiscs = opt;
       this.newDiscs = this.discs;
       if (opt !== 'All') {
