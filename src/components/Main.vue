@@ -41,7 +41,6 @@ export default {
       discs: null,
       newDiscs: null,
       selectedDiscs: 'All',
-      test: '',
     };
   },
   computed: {
@@ -74,6 +73,7 @@ export default {
     filtering(opt) {
       console.log(opt);
       // inverto i due array per usare la copia del mio array principale
+      this.selectedDiscs = opt;
       this.newDiscs = this.discs;
       if (opt !== 'All') {
         this.newDiscs = this.discs.filter((element) => {
